@@ -2,6 +2,8 @@ import './App.css'
 import './fonts/NiceSugar.ttf'
 import './fonts/MightyKingdom.ttf'
 import './fonts/Smilecake.otf'
+import './fonts/HeyPatrick.ttf'
+import './fonts/Something.otf'
 import { Home, Form, Detail, LandingPage } from './views'
 import { Route, useLocation } from 'react-router-dom';
 

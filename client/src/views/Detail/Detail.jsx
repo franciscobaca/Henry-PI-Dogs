@@ -6,7 +6,7 @@ import style from "./Detail.module.css";
 
 function Detail(props) {
   const dispatch = useDispatch();
-  const history = useHistory;
+  const history = useHistory();
 
   React.useEffect(() => {
     dispatch(getDetail(props.match.params.id));
@@ -18,7 +18,7 @@ function Detail(props) {
     dispatch(clearDetail());
   };
 
-  const deleteDog = () => {
+  const deleteHandler = () => {
     dispatch(deleteDog(props.match.params.id));
     history.push("/home");
   };
@@ -35,13 +35,13 @@ function Detail(props) {
       {dogDetail.length > 0 ? (
         <div className={style.container}>
           <div className={style.details}>
-            <h1>Breed: {dogDetail[0].name} </h1>
+            <h1 className={style.breedStyle}>Breed: {dogDetail[0].name} </h1>
             <h2>Temperaments: {dogDetail[0].temperament}</h2>
             <h2>Height: {dogDetail[0].height} cm</h2>
             <h2>Weight: {dogDetail[0].weight} kg</h2>
             <h2>Life Span: {dogDetail[0].lifeSpan}</h2>
             <div className={style.buttonsContainer}>
-              <button className={style.buttonDelete} onClick={deleteDog}>
+              <button className={style.buttonDelete} onClick={deleteHandler}>
                 DELETE
               </button>
               <button className={style.buttonUpdate}>UPDATE</button>
@@ -60,6 +60,10 @@ function Detail(props) {
       ) : (
         <p className={style.loading}>Loading...</p>
       )}
+
+      <div>
+        <h3 className={style.dogsOut}>{`< WHO LET THE DOGS OUT? >`}</h3>
+      </div>
     </div>
   );
 }

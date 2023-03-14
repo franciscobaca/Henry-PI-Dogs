@@ -16,6 +16,18 @@
     url("./fonts/Smilecake.otf") format("truetype");
 }
 
+@font-face {
+  font-family: "HeyPatrick";
+  src: local("HeyPatrick"),
+    url("./fonts/HeyPatrick.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Something";
+  src: local("Something"),
+    url("./fonts/Something.otf") format("truetype");
+}
+
 
 .App {
   text-align: center;

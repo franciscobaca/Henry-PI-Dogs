@@ -106,6 +106,8 @@ route.delete('/:id', async(req,res) => {
                 id: id
             }
         })
+    const allDogs = await getAllDogs();
+    res.status(200).send(allDogs)
     } catch (error) {
         res.status(400).send("Dog cannot be deleted")
     }

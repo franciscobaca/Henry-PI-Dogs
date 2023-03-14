@@ -59,6 +59,7 @@
     animation: fadeInAnimationTitle ease 6s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
+    text-shadow: 5px 5px 5px rgb(161, 212, 171);
 }
 
 

@@ -1,23 +1,22 @@
-/* eslint-disable import/no-extraneous-dependencies */
-const { expect } = require('chai');
 const session = require('supertest-session');
-const app = require('../../src/app.js');
-const { Dog, conn } = require('../../src/db.js');
+const app = require('../../src/app');
+const { Dog, conn } = require('../../src/db');
 
 const agent = session(app);
+
 const dog = {
-  name: 'Pug',
+  name: 'Affenpinscher',
 };
 
-describe('Videogame routes', () => {
+describe('Dog Route', () => {
   before(() => conn.authenticate()
   .catch((err) => {
-    console.error('Unable to connect to the database:', err);
+    console.error('Cannot connect to  dabase:', err);
   }));
   beforeEach(() => Dog.sync({ force: true })
     .then(() => Dog.create(dog)));
   describe('GET /dogs', () => {
-    it('should get 200', () =>
+    it('Should get status 200', () =>
       agent.get('/dogs').expect(200)
     );
   });

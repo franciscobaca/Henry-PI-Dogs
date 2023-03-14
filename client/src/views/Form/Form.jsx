@@ -3,6 +3,7 @@ import style from "./Form.module.css";
 import { getTemperaments, postDog } from "../../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
+import PerritoChad from "../../Images/PerritoChad.jpg";
 
 function Form() {
   const dispatch = useDispatch();
