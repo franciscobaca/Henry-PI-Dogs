@@ -1,0 +1,43 @@
+.searchContainer {
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+}
+
+.input {
+    box-shadow: 0px 0px 21px -9px rgba(87,85,87,1);
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    height: 35px;
+    width: 300px;
+    outline: none;
+    font-size: medium;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.buttonSearch {
+    box-shadow: 0px 0px 21px -9px rgba(87,85,87,1);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: smaller;
+    border: none;
+    display: flex;
+    align-items: center;
+    height: 25px;
+    width: fit-content;
+    border-radius: 5px;
+    margin-left: 25px;
+    cursor: pointer;
+    transition: transform 0.1s;
+    outline: none;
+    margin-left: 10px;
+    color: gray;
+}
+
+.buttonSearch:hover {
+    transform: scale(0.9);
+    box-shadow: 0px 0px 17px -5px rgba(44,125,102,1);
+}

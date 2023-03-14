@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "NiceSugar";
+  src: local("Nice Sugar"),
+    url("./fonts/NiceSugar.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Kingdom";
+  src: local("MightyKingdom"),
+    url("./fonts/MightyKingdom.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Smilecake";
+  src: local("Smilecake"),
+    url("./fonts/Smilecake.otf") format("truetype");
+}
+
+
+.App {
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Shantell Sans', cursive;
+}
+body {
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  background-image: url('./Images/818402.jpg');
+  backdrop-filter: blur(10px);
+}
+@keyframes fadeInAnimation {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}

@@ -1,0 +1,13 @@
+export const GET_DOGS = 'GET_DOGS';
+export const GET_DETAIL = 'GET_DETAIL'
+export const DELETE_DOG = 'DELETE_DOG';
+export const UPDATE_DOG = 'UPDATE_DOG';
+export const GET_TEMPERAMENTS = 'GET_TEMPERAMENTS';
+export const FILTER_BY_TEMPERAMENT = 'FILTER_BY_TEMPERAMENT';
+export const FILTER_CREATED = 'FILTER_CREATED';
+export const FILTER_NAME = 'FILTER_NAME';
+export const FILTER_BY_WEIGHT = 'FILTER_BY_WEIGHT';
+export const SEARCH_DOG = 'SEARCH_DOG';
+export const POST_DOG = 'POST_DOG';
+export const CLEAR_DETAIL = 'CLEAR_DETAIL'
+export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';

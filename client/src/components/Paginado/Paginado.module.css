@@ -1,0 +1,27 @@
+.paginado {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    justify-content: center;
+    padding: 2rem;
+    background: none;
+}
+
+.paginado button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: bold;
+    color: rgb(89, 110, 91);
+    font-size: small;
+}
+
+.paginado button:hover {
+    transform: scale(1.3);
+    color: black;
+}
+
+.active {
+    color: red;
+}

@@ -1,0 +1,56 @@
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+    border-radius: 6px;
+    width: 275px;
+    height: 350px;
+    box-shadow: 0px 0px 15px 0px rgba(21, 6, 10, 0.68);
+    animation: fadeInAnimation ease 1.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    transition: transform .2s;
+    background-image: url('../../Images/arribaverde.jpg');
+    backdrop-filter: blur(5px);
+    background-size: 300px;
+    cursor: pointer;        
+}
+
+.cardContainer:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 35px 0px rgb(7, 70, 30);
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.imgContainer {
+    width: 300px;
+    height: 300px;
+}
+
+.dogImage {
+    border-radius: 5px;
+}
+
+.weightRange {
+    font-weight: bold;
+    font-size: small;
+}
+
+.dogBreed {
+    color: black;
+}
+
+.temperaments {
+    font-size: small;
+}
+
+.dogBreedLink {
+    text-decoration: none;
+}
