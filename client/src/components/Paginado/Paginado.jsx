@@ -19,7 +19,7 @@ export default function Paginado({ dogsPerPage, totalDogs }) {
           <button
             onClick={() => dispatch(setCurrentPage(number))}
             key={index}
-            className={number === currentPage ? "active" : ""}
+            className={number === currentPage ? style.active : ""}
           >
             {number}
           </button>

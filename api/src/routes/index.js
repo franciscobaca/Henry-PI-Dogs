@@ -1,12 +1,12 @@
 const Router  = require ('express')
-const getDogs = require('./getDogs')
-const getTemperaments = require('./getTemperaments')
+const dogs = require('./dogs')
+const temperaments = require('./temperaments')
 
 const router = Router();
 
 router.use(Router.json())
 
-router.use('/dogs', getDogs)
-router.use('/temperaments', getTemperaments)
+router.use('/dogs', dogs)
+router.use('/temperaments', temperaments)
 
 module.exports = router;

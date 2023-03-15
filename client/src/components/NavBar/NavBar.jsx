@@ -16,7 +16,6 @@ import {
 function NavBar() {
   const dispatch = useDispatch();
   const temperaments = useSelector((state) => state.temperaments);
-  const allDogs = useSelector((state) => state.dogs);
 
   React.useEffect(() => {
     dispatch(getDogs());
@@ -26,38 +25,42 @@ function NavBar() {
   const filterByOrder = (event) => {
     let value = event.target.value;
     dispatch(filterByName(value));
-    setCurrentPage(1);
+    dispatch(setCurrentPage(1));
   };
 
   const filterByCreated = (event) => {
     let value = event.target.value;
     dispatch(filterByCreate(value));
-    setCurrentPage(1);
+    dispatch(setCurrentPage(1));
   };
 
   const filterTemperamentHandler = (event) => {
     let value = event.target.value;
     dispatch(filterByTemperaments(value));
-    setCurrentPage(1);
+    dispatch(setCurrentPage(1));
   };
 
   const filterWeightHandler = (event) => {
     let value = event.target.value;
     dispatch(filterByWeight(value));
-    setCurrentPage(1);
+    dispatch(setCurrentPage(1));
   };
 
   const reloadCharacters = (event) => {
     event.preventDefault();
     dispatch(getDogs());
-    setCurrentPage(1);
+    dispatch(setCurrentPage(1));
   };
+
+  function refreshPage() {
+    window.location.reload(false);
+  }
 
   return (
     <div className={style.container}>
       <div>
         <Link to="/home" style={{ textDecoration: "none" }}>
-          <p className={style.homeLink} onClick={reloadCharacters}>
+          <p className={style.homeLink} onClick={refreshPage}>
             HOME
           </p>
         </Link>
@@ -71,6 +74,9 @@ function NavBar() {
       <Searchbar />
       <div className={style.filterContainer}>
         <select onChange={filterTemperamentHandler} className={style.filters}>
+          <option value="" selected disabled hidden>
+            Temperaments
+          </option>
           {temperaments.map((temperament, index) => {
             return (
               <option key={index} value={temperament.name}>
@@ -92,8 +98,11 @@ function NavBar() {
         </select>
 
         <select onChange={filterWeightHandler} className={style.filters}>
-          <option value="minWeigth">Min Weigth</option>
-          <option value="maxWeight">Max Weigth</option>
+          <option value="" selected disabled hidden>
+            Weight Filter
+          </option>
+          <option value="min_weigth">Min Weigth</option>
+          <option value="max_weight">Max Weigth</option>
         </select>
         <button onClick={reloadCharacters} className={style.reloadButton}>
           Reset

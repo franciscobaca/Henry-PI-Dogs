@@ -1,6 +1,7 @@
 const axios = require('axios')
 const { Dog, Temperament } = require('../db.js')
-// 
+
+//Obtengo los Dogs de la API 
 const getApiDogs = async() => {
     const apiUrl = await axios.get("https://api.thedogapi.com/v1/breeds")
     const apiDogs = await apiUrl.data.map((dog) => {
@@ -19,6 +20,8 @@ const getApiDogs = async() => {
     return apiDogs;
 };
 
+
+//Obtengo los Dogs de la DB
 const getDbDogs = async() => {
     const dbDogs = await Dog.findAll({
         include: {
@@ -30,6 +33,7 @@ const getDbDogs = async() => {
         }
     });
 
+//Formateo el Dog de la DB
     let dogsReady = dbDogs.map((dog) => {
         return {
             id: dog.id,
@@ -46,7 +50,7 @@ const getDbDogs = async() => {
     return dogsReady;
 }
 
-
+//Junto ambos array de dogs
 const getAllDogs = async() => {
     const dogsDb = await getDbDogs();
     const dogsApi = await getApiDogs();

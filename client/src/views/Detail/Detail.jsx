@@ -44,7 +44,9 @@ function Detail(props) {
               <button className={style.buttonDelete} onClick={deleteHandler}>
                 DELETE
               </button>
-              <button className={style.buttonUpdate}>UPDATE</button>
+              {/* <Link to="/update">
+                <button className={style.buttonUpdate}>UPDATE</button>
+              </Link> */}
             </div>
           </div>
           <div className={style.imgContainer}>

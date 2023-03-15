@@ -1,9 +1,9 @@
-import { FILTER_BY_MIN_WEIGHT,  GET_DOGS, DELETE_DOG, GET_DETAIL, GET_TEMPERAMENTS, FILTER_BY_TEMPERAMENT, FILTER_CREATED, FILTER_NAME, FILTER_BY_WEIGHT, SEARCH_DOG, POST_DOG, CLEAR_DETAIL, SET_CURRENT_PAGE } from '../actions/types'
+import { GET_DOGS, DELETE_DOG, UPDATE_DOG, GET_DETAIL, GET_TEMPERAMENTS, FILTER_BY_TEMPERAMENT, FILTER_CREATED, FILTER_NAME, FILTER_BY_WEIGHT, SEARCH_DOG, POST_DOG, CLEAR_DETAIL, SET_CURRENT_PAGE } from '../actions/types'
 
 const initialState = {
     dogs: [],
     allDogs: [],
-    dogDetail: {},
+    dogDetail: [],
     temperaments: [],
     currentPage: 1,
 }
@@ -68,30 +68,20 @@ function reducer(state = initialState, action){
             }
 
         case FILTER_BY_WEIGHT:
-            const allDogsWeights = state.allDogs.filter(dog => dog.weight_prom)
-            const filterWeights = action.payload === "minWeight" ? allDogsWeights.sort((a,b) => {
-                if(a.weight_prom > b.weight_prom){
-                    return 1;
-                }
-                if(a.weight_prom < b.weight_prom){
-                    return -1;
-                }
-                return 0
-            })
-            : allDogsWeights.sort((a,b) => {
-                if(a.weight_prom > b.weight_prom){
-                    return 1;
-                }
-                if(a.weight_prom < b.weight_prom){
-                    return -1;
-                }
-                return 0
-            }).reverse()
-
-            return {
-                ...state,
-                dogs: filterWeights
-            }
+            let dogsSorted = action.payload === "min_weight" ? state.dogs.sort((a, b) => {
+                  if (a.weight_prom > b.weight_prom) return 1;
+                  if (b.weight_prom > a.weight_prom) return -1;
+                  return 0;
+                })
+              : state.dogs.sort((a, b) => {
+                  if (a.weight_prom > b.weight_prom) return -1;
+                  if (b.weight_prom > a.weight_prom) return 1;
+                  return 0;
+                });
+          return {
+            ...state,
+            dogs: dogsSorted
+          };
             
         case FILTER_NAME:
             const filteredDogs = action.payload === 'desc' ? state.dogs.sort((a,b) => {
@@ -122,6 +112,10 @@ function reducer(state = initialState, action){
                 ...state,
                 dogs: state.dogs.filter(dog => dog.id !== action.payload)
             }
+        case UPDATE_DOG:
+            return {
+                ...state
+            }    
                     
         default:
             return { ...state }

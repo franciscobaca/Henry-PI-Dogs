@@ -8,6 +8,8 @@
 }
 
 .paginado button {
+    font-family: "NiceSugar";
+    font-weight: 0;
     background: none;
     border: none;
     cursor: pointer;
@@ -18,7 +20,7 @@
 }
 
 .paginado button:hover {
-    transform: scale(1.3);
+    transform: scale(1.5);
     color: black;
 }
 

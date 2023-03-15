@@ -41,6 +41,7 @@
 .weightRange {
     font-weight: bold;
     font-size: small;
+    color: black;
 }
 
 .dogBreed {
@@ -49,6 +50,7 @@
 
 .temperaments {
     font-size: small;
+    color: black;
 }
 
 .dogBreedLink {

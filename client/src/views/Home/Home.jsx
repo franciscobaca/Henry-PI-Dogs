@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDogs, getTemperaments } from "../../redux/actions/actions";
+import { getDogs } from "../../redux/actions/actions";
 import Cards from "../../components/CardsContainer/Cards";
 import Paginado from "../../components/Paginado/Paginado";
 import style from "./Home.module.css";
@@ -8,9 +8,7 @@ import NavBar from "../../components/NavBar/NavBar";
 
 function Home() {
   const dispatch = useDispatch();
-  const temperaments = useSelector((state) => state.temperaments);
   const { currentPage, dogs } = useSelector((state) => state);
-  const [order, setOrder] = React.useState("");
   //----------------------------------------------------------------//
   const [dogsPerPage, setDogPerPage] = useState(8);
   const indexLastDog = currentPage * dogsPerPage;
@@ -30,6 +28,7 @@ function Home() {
         currentPage={currentPage}
       />
       <Cards dogs={currentDogs} />
+      <footer className={style.footer}>Copyright© Francisco Baca</footer>
     </div>
   );
 }

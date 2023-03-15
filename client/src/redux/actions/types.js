@@ -1,7 +1,7 @@
 export const GET_DOGS = 'GET_DOGS';
 export const GET_DETAIL = 'GET_DETAIL'
 export const DELETE_DOG = 'DELETE_DOG';
-export const UPDATE_DOG = 'UPDATE_DOG';
+export const UPDATE_DOG = 'UPDATE_DOG'
 export const GET_TEMPERAMENTS = 'GET_TEMPERAMENTS';
 export const FILTER_BY_TEMPERAMENT = 'FILTER_BY_TEMPERAMENT';
 export const FILTER_CREATED = 'FILTER_CREATED';

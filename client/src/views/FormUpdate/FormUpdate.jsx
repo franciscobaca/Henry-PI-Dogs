@@ -1,10 +1,10 @@
 import React from "react";
-import style from "./Form.module.css";
+import style from "./FormUpdate.module.css";
 import { getTemperaments, postDog } from "../../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 
-function Form() {
+export default function FormUpdate() {
   const dispatch = useDispatch();
   const history = useHistory();
   const allTemperaments = useSelector((state) => state.temperaments);
@@ -23,7 +23,6 @@ function Form() {
     weight_max: "",
     lifeSpan: "",
     image: "",
-    description: "",
     temperament: [],
   });
 
@@ -35,13 +34,7 @@ function Form() {
       errors.name = "Empty field";
     }
 
-    if (input.name && /^[a-zA-Z]*$/.test(input.name)) {
-      if (input.name.length >= 30) {
-        errors.name = "Name is too long";
-      }
-    }
-
-    if (input.name && !/^[a-zA-Z\s]*$/.test(input.name)) {
+    if (input.name && !/^[a-zA-Z]*$/.test(input.name)) {
       errors.name = "Numbers and special characters are not allowed";
     }
 
@@ -53,24 +46,11 @@ function Form() {
     if (!input.height_min || input.height_min <= 0) {
       errors.height_min = "Empty field";
     }
-
-    if (input.height_min && /^[0-9]*$/.test(input.height_min)) {
-      if (Number(input.height_min) >= 1000) {
-        errors.height_min = "Dogs are not that big...";
-      }
-    }
-
     if (!input.height_max || input.height_max <= 0) {
       errors.height_max = "Empty field";
     }
     if (input.height_max && !/^[0-9]*$/.test(input.height_max)) {
       errors.height_max = "Only numbers allowed";
-    }
-
-    if (input.height_max && /^[0-9]*$/.test(input.height_max)) {
-      if (Number(input.height_max) >= 1000) {
-        errors.height_max = "Dogs are not that big...";
-      }
     }
 
     if (input.height_min) {
@@ -92,24 +72,12 @@ function Form() {
       errors.weight_min = "Only numbers allowed";
     }
 
-    if (input.weight_min && /^[0-9]*$/.test(input.weight_min)) {
-      if (Number(input.weight_min) >= 1000) {
-        errors.weight_min = "Dogs don't weight that much...";
-      }
-    }
-
     if (!input.weight_max || input.weight_max <= 0) {
       errors.weight_max = "Empty field";
     }
 
     if (input.weight_max && !/^[0-9]*$/.test(input.weight_max)) {
       errors.weight_max = "Only numbers allowed";
-    }
-
-    if (input.weight_max && /^[0-9]*$/.test(input.weight_max)) {
-      if (Number(input.weight_max >= 1000)) {
-        errors.weight_max = "Dogs don't weight that much...";
-      }
     }
 
     if (input.weight_min && input.weight_max) {
@@ -137,28 +105,8 @@ function Form() {
       }
     }
 
-    if (input.lifeSpan && /^[0-9]*$/.test(input.lifeSpan)) {
-      if (Number(input.lifeSpan) >= 1000) {
-        errors.lifeSpan = "Dogs don't live that long...";
-      }
-    }
-
     return errors;
   };
-
-  // const setDefaultDog = () => {
-  //   setInput({
-  //     name: "Cheems",
-  //     height_min: "20",
-  //     height_max: "50",
-  //     weight_min: "10",
-  //     weight_max: "25",
-  //     lifeSpan: "",
-  //     image:
-  //       "https://i.pinimg.com/originals/e6/4d/2f/e64d2f640b07a61f3dbbc1431abe3190.png",
-  //     temperament: ["Playful"],
-  //   });
-  // };
 
   const changeHandler = (event) => {
     let property = event.target.name;
@@ -191,15 +139,7 @@ function Form() {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log(input.description);
     if (
-      !input.name ||
-      !input.height_min ||
-      !input.height_max ||
-      !input.weight_min ||
-      !input.weight_max ||
-      !input.lifeSpan ||
-      !input.temperament.length ||
       errors.name ||
       errors.height_min ||
       errors.height_max ||
@@ -209,8 +149,7 @@ function Form() {
     ) {
       alert("Some data is wrong or missing");
     } else {
-      dispatch(postDog(input));
-      alert("The dog was created");
+      alert("Dog succesfully updated!");
       setInput({
         name: "",
         height_min: "",
@@ -220,7 +159,6 @@ function Form() {
         lifeTime: "",
         temperament: [],
       });
-      history.push("/home");
     }
   };
 
@@ -231,7 +169,7 @@ function Form() {
       </Link>
       <form onSubmit={submitHandler} className={style.formContainer}>
         <div className={style.nameContainer}>
-          <label name="name">NAME: </label>
+          <label name="name">Name: </label>
           <input
             type="text"
             name="name"
@@ -244,7 +182,7 @@ function Form() {
         </div>
 
         <div>
-          <label name="height_min">HEIGHT MIN: </label>
+          <label name="height_min">Height Min: </label>
           <input
             type="text"
             name="height_min"
@@ -257,7 +195,7 @@ function Form() {
         </div>
 
         <div>
-          <label name="height_max">HEIGHT MAX: </label>
+          <label name="height_max">Height Max: </label>
           <input
             type="text"
             name="height_max"
@@ -270,7 +208,7 @@ function Form() {
         </div>
 
         <div>
-          <label name="weight_min">WEIGHT MIN: </label>
+          <label name="weight_min">Weight Min: </label>
           <input
             type="text"
             name="weight_min"
@@ -283,7 +221,7 @@ function Form() {
         </div>
 
         <div>
-          <label name="weight_max">WEIGHT MAX: </label>
+          <label name="weight_max">Weight Max: </label>
           <input
             type="text"
             name="weight_max"
@@ -296,7 +234,7 @@ function Form() {
         </div>
 
         <div>
-          <label name="lifeSpan">LIFESPAN: </label>
+          <label name="lifeSpan">LifeSpan: </label>
           <input
             type="text"
             name="lifeSpan"
@@ -309,7 +247,7 @@ function Form() {
         </div>
 
         <div>
-          <label name="image">IMAGE: </label>
+          <label name="image">Image: </label>
           <input
             type="text"
             name="image"
@@ -320,22 +258,8 @@ function Form() {
         </div>
 
         <div>
-          <label name="Description"> Description </label>
-          <input
-            type="text"
-            name="description"
-            value={input.description}
-            placeholder="Say something about this dog"
-            onChange={changeHandler}
-          ></input>
-        </div>
-
-        <div>
-          <label className={style.temperamentLabel}>TEMPERAMENTS: </label>
+          <label className={style.temperamentLabel}>Temperaments: </label>
           <select onChange={selectHandler} className={style.selectTemps}>
-            <option value="" selected disabled hidden>
-              Choose temperaments
-            </option>
             {allTemperaments.length &&
               allTemperaments.map((t) => {
                 return <option value={t.name}>{t.name}</option>;
@@ -366,9 +290,7 @@ function Form() {
           CREATE
         </button>
       </form>
-      <div className={style.titleForm}>{`< CREATE YOUR DOG >`}</div>
+      <div className={style.titleForm}>{`< CHANGE YOUR DOG >`}</div>
     </div>
   );
 }
-
-export default Form;

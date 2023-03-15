@@ -15,8 +15,8 @@ export default function Searchbar() {
   };
 
   const handleButtonSearch = () => {
-    setSearch("");
     dispatch(searchDog(search));
+    setSearch("");
   };
 
   return (

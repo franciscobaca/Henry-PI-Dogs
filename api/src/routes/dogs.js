@@ -87,7 +87,7 @@ route.post('/', async (req, res) => {
             }
         })
 
-        console.log(dbTemperaments);
+        // console.log(dbTemperaments);
         
         await dogCreated.addTemperament(dbTemperaments);
         res.status(200).send("Dog created succesfully!")
@@ -112,5 +112,22 @@ route.delete('/:id', async(req,res) => {
         res.status(400).send("Dog cannot be deleted")
     }
 })
+
+// route.put('/:id', async(req,res) => {
+//     let updateDog = { ...req.body }
+//     const { id } = req.params
+//     const oldDog = await Dog.findByBk(id)
+//     console.log(oldDog)
+
+//     // try {
+
+
+//     // } catch (error) {
+//     //     res.status(400).send({"Something went wrong"})
+//     // }
+
+//     // console.log(dogUpdate)
+
+// })
 
 module.exports = route;
