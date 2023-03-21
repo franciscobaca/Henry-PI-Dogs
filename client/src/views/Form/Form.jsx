@@ -23,7 +23,6 @@ function Form() {
     weight_max: "",
     lifeSpan: "",
     image: "",
-    description: "",
     temperament: [],
   });
 
@@ -146,20 +145,6 @@ function Form() {
     return errors;
   };
 
-  // const setDefaultDog = () => {
-  //   setInput({
-  //     name: "Cheems",
-  //     height_min: "20",
-  //     height_max: "50",
-  //     weight_min: "10",
-  //     weight_max: "25",
-  //     lifeSpan: "",
-  //     image:
-  //       "https://i.pinimg.com/originals/e6/4d/2f/e64d2f640b07a61f3dbbc1431abe3190.png",
-  //     temperament: ["Playful"],
-  //   });
-  // };
-
   const changeHandler = (event) => {
     let property = event.target.name;
     let value = event.target.value;
@@ -191,7 +176,6 @@ function Form() {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log(input.description);
     if (
       !input.name ||
       !input.height_min ||
@@ -315,17 +299,6 @@ function Form() {
             name="image"
             value={input.image}
             placeholder="Paste image link here..."
-            onChange={changeHandler}
-          ></input>
-        </div>
-
-        <div>
-          <label name="Description"> Description </label>
-          <input
-            type="text"
-            name="description"
-            value={input.description}
-            placeholder="Say something about this dog"
             onChange={changeHandler}
           ></input>
         </div>

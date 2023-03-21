@@ -16,7 +16,6 @@ const getAllTemperaments = async() => {
     });
 
     let allTemperaments = await Temperament.findAll();
-    console.log(allTemperaments)
 
     return allTemperaments;
 }
